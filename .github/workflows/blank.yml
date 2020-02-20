@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: LaTeX compilation
+      uses: dante-ev/latex-action@v0.2.0
+      with:
+        # The root LaTeX file to be compiled
+        root_file: ./src/main.tex
+        # The working directory for the latex compiler to be invoked
+        working_directory: ./src# optional
+        # LaTeX engine to be used
+        compiler: latexmk # optional, default is latexmk
+        # Extra arguments to be passed to the latex compiler
+        args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode
+        # Install extra packages by apt-get
+        extra_system_packages: texlive-full # optional
