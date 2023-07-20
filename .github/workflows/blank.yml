@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3.1.2
+    - uses: actions/checkout@v3
     - name: Run a one-line script
       run: echo Hello, world!
     - name: LaTeX compilation
@@ -24,7 +24,7 @@ jobs:
         args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode
         # Install extra packages by apt-get
         # extra_system_packages: # optional
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v3
       with:
         name: Paper
         path: ./src/main.pdf
